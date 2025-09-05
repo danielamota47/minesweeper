@@ -101,5 +101,10 @@ void revelar(int x, int y, char tabuleiro[linhas][colunas], char visivel[linhas]
     visivel[x][y] = tabuleiro[x][y];
 }
 
+void porBandeira(int x, int y, char tabuleiro[linhas][colunas], char visivel[linhas][colunas]){
+    if(x<0 || x>linhas || y<0 || y>linhas) return;
+    visivel[x][y] = 'F';
+}
+
 
 
