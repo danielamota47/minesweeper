@@ -97,8 +97,20 @@ void imprimirTab(char tabuleiro[linhas][colunas]){
 }
 
 void revelar(int x, int y, char tabuleiro[linhas][colunas], char visivel[linhas][colunas]){
-    if(x<0 || x>linhas || y<0 || y>colunas) return;
+    if(x<0 || x>=linhas || y<0 || y>=colunas) return;
+    if(visivel[x][y]!='#') return;
     visivel[x][y] = tabuleiro[x][y];
+
+    if(tabuleiro[x][y]=='0'){
+        int dx[8] = {-1,-1,-1,0,0,1,1,1};
+        int dy[8] = {-1,0,1,-1,1,-1,0,1};
+
+        for(int k=0;k<8;k++){
+            int nx = x+dx[k];
+            int ny = y+dy[k];
+            revelar(nx,ny,tabuleiro,visivel);            
+        }
+    }
 }
 
 void porBandeira(int x, int y, char tabuleiro[linhas][colunas], char visivel[linhas][colunas]){
