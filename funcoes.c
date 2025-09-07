@@ -3,7 +3,6 @@
 #include <time.h>
 #include "def.h"
 
-
 //modo beginner
 #define linhas 9
 #define colunas 9
@@ -117,6 +116,15 @@ void porBandeira(int x, int y, char tabuleiro[linhas][colunas], char visivel[lin
     if(x<0 || x>linhas || y<0 || y>linhas) return;
     visivel[x][y] = 'F';
 }
+
+int verificarVitoria(char visivel[linhas][colunas], char tabuleiro[linhas][colunas]){
+    for(int i=0;i<linhas;i++){
+        for(int j=0;j<colunas;j++){
+            if (tabuleiro[i][j]!='!' && visivel[i][j]=='#') return 0; 
+        }
+    }
+    return 1;
+} 
 
 
 
