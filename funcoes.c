@@ -65,8 +65,8 @@ char contarBom(char tabuleiro[linhas][colunas], int i, int j){
 
 void imprimirVisivel(char visivel[linhas][colunas]){
     printf("   ");
-    for(char j='a';j<'a'+colunas;j++){
-        printf("%c ",j);
+    for(char j=1;j<=colunas;j++){
+        printf("%d ",j);
     }
     printf("\n");
     
@@ -81,8 +81,8 @@ void imprimirVisivel(char visivel[linhas][colunas]){
 
 void imprimirTab(char tabuleiro[linhas][colunas]){
     printf("   ");
-    for(char j='a';j<'a'+colunas;j++){
-        printf("%c ",j);
+    for(char j=1;j<=colunas;j++){
+        printf("%d ",j);
     }
     printf("\n");
     
@@ -113,7 +113,7 @@ void revelar(int x, int y, char tabuleiro[linhas][colunas], char visivel[linhas]
 }
 
 void porBandeira(int x, int y, char tabuleiro[linhas][colunas], char visivel[linhas][colunas]){
-    if(x<0 || x>linhas || y<0 || y>linhas) return;
+    if(x<0 || x>=linhas || y<0 || y>=linhas) return;
     visivel[x][y] = 'F';
 }
 

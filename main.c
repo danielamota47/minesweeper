@@ -15,39 +15,44 @@ int main(){
     criarVisivel(visivel);
     imprimirVisivel(visivel);
         
-    char entrada[3], cB1,cB2;
+    char comando,linha;
+    int coluna;
     int semParar = 1;
 
+    printf("\n r b2 -> revelar\n ");
+    printf("b b2 -> bandeira\n");
+    printf(" s 00 -> sair\n\n");
     while (semParar){
-        printf("\nRevelar coordenada ('00' para BANDEIRA, '11' para SAIR): ");
-        scanf("%2s", entrada);
+        scanf(" %c %c%d",&comando,&linha,&coluna);
 
-        if (strcmp(entrada,"00")==0){
-            printf("Coordenadas da bandeira: ");
-            scanf(" %c %c", &cB1, &cB2);
-            int nB1 = cB1-'a';
-            int nB2 = cB2-'a';
-            porBandeira(nB1, nB2, tabuleiro, visivel);
-            imprimirVisivel(visivel);
-
-        } else if (strcmp(entrada,"11")==0){
-            semParar = 0;  
-
-        } else if (verificarVitoria(visivel,tabuleiro)){
-            imprimirTab(tabuleiro);
-            printf("Parabéns! Ganhastes!");
+        if(comando=='s'&&linha=='0'&&coluna==0){
             semParar=0;
-        }else{
-            int x = entrada[0]-'a';
-            int y = entrada[1]-'a';
-            revelar(x, y, tabuleiro, visivel);
+
+        } else if(comando=='r'){
+            int x = linha-'a';
+            int y = coluna-1;
+            revelar(x,y,tabuleiro,visivel);
             imprimirVisivel(visivel);
 
             if (tabuleiro[x][y]=='!'){
                 imprimirTab(tabuleiro);
                 printf("BOOM!\n");
                 semParar = 0;  
-            }
+            }   
+
+        }else if (comando=='b'){
+            int x = linha-'a';
+            int y = coluna-1;
+            porBandeira(x, y, tabuleiro, visivel);
+            imprimirVisivel(visivel);
+
+        }else if (verificarVitoria(visivel,tabuleiro) && semParar){
+            imprimirTab(tabuleiro);
+            printf("Parabéns! Ganhastes!\n");
+            semParar=0;
+
+        } else{
+            printf("comando errado.\n");
         }
 
     }
