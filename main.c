@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include "def.h"
 #include "funcoes.c"
-#include <ncurses.h>
 #include <string.h>
 
 int main(){
@@ -22,6 +21,7 @@ int main(){
     printf("\n r b2 -> revelar\n ");
     printf("b b2 -> bandeira\n");
     printf(" s 00 -> sair\n\n");
+
     while (semParar){
         scanf(" %c %c%d",&comando,&linha,&coluna);
 

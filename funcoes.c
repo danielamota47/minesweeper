@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include "def.h"
+#
 
 //modo beginner
 #define linhas 9
@@ -73,7 +74,11 @@ void imprimirVisivel(char visivel[linhas][colunas]){
     for(int i=0;i<linhas;i++){
         printf("%c| ",'a'+i);
         for(int j=0;j<colunas;j++){
-            printf("%c ",visivel[i][j]);
+            if (visivel[i][j]=='F') {
+                printf("\033[31mF\033[0m ");
+            } else {
+                printf("%c ", visivel[i][j]);
+            }
         }
         printf("\n");
     }
@@ -114,7 +119,7 @@ void revelar(int x, int y, char tabuleiro[linhas][colunas], char visivel[linhas]
 
 void porBandeira(int x, int y, char tabuleiro[linhas][colunas], char visivel[linhas][colunas]){
     if(x<0 || x>=linhas || y<0 || y>=linhas) return;
-    visivel[x][y] = 'F';
+    visivel[x][y] = 'F'; 
 }
 
 int verificarVitoria(char visivel[linhas][colunas], char tabuleiro[linhas][colunas]){
