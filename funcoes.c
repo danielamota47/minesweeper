@@ -76,7 +76,7 @@ void imprimirVisivel(char visivel[linhas][colunas]){
         for(int j=0;j<colunas;j++){
             if (visivel[i][j]=='F') {
                 printf("\033[31mF\033[0m ");
-            } else {
+            } else{
                 printf("%c ", visivel[i][j]);
             }
         }
@@ -94,7 +94,11 @@ void imprimirTab(char tabuleiro[linhas][colunas]){
     for(int i=0;i<linhas;i++){
         printf("%c| ",'a'+i);
         for(int j=0;j<colunas;j++){
-            printf("%c ",tabuleiro[i][j]);
+            if(tabuleiro[i][j]=='!'){
+                printf("\033[31m!\033[0m ");
+            } else{
+                printf("%c ",tabuleiro[i][j]);
+            } 
         }
         printf("\n");
     }
