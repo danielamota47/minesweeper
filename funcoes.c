@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include "def.h"
-#
+
 
 //modo beginner
 #define linhas 9

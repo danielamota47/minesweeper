@@ -16,7 +16,7 @@ int main(){
         
     char comando,linha;
     int coluna;
-    int semParar = 1;
+    int semParar=1, minutos=0, segundos=0;
 
     printf("\n r b2 -> revelar\n ");
     printf("b b2 -> bandeira\n");
@@ -38,7 +38,7 @@ int main(){
                 imprimirTab(tabuleiro);
                 printf("BOOM!\n");
                 semParar = 0;  
-            }   
+            }  
 
         }else if (comando=='b'){
             int x = linha-'a';
